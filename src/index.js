@@ -17,6 +17,9 @@ const theme = createTheme({
   },
 });
 
+const handleData=(city, state)=>{
+ 
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,7 +27,7 @@ root.render(
     <BrowserRouter>
     <ThemeProvider theme={theme}>
     <Routes>
-      <Route path='/' element ={<App/>} />
+      <Route path='/' element ={<App  handleData={handleData}/>} />
       <Route path='/my-bookings' element={<MyBookings />} />
     </Routes>
     </ThemeProvider>

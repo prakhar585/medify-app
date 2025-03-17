@@ -32,13 +32,27 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  
   padding: 20px;
 }
 
+.dropdown-button{
+  border: 0;
+  color: white;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .select{
-  width: 300px;
+  width: 250px;
   text-align: center;
+  margin: 10px;
 }
 
 
