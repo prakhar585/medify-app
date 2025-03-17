@@ -1,0 +1,44 @@
+.section{
+    padding:  0 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* position: absolute; */
+    background-color: #2AA7FF14;
+
+    width: 100%; /* Make it take full width */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.hero-image img {
+    width: 100%; /* Make it responsive */
+    max-width: 585px; /* Ensure it doesn't exceed original size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 20px;
+}
+
+.heading h3 h1 p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 20px; /* Reduce padding */
+        max-width: 100%; /* Ensure it fits screen */
+    }
+
+    .hero-image img {
+        max-width: 90%; /* Make image scale better */
+    }
+}

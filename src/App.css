@@ -28,6 +28,21 @@
   color: #61dafb;
 }
 
+.dropdown-container{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.select{
+  width: 300px;
+  text-align: center;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
