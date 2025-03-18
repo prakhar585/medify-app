@@ -8,12 +8,16 @@
 
 .card{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 50px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     width: 75vw;
     padding: 20px;
     border-radius:10px ;
+}
+
+.hospital-info{
+    text-align: left;
 }
 
 .image-section{

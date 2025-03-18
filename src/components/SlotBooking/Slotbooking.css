@@ -1,0 +1,40 @@
+.slot-booking {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .date-selection, .time-selection {
+    margin-bottom: 20px;
+  }
+  
+  .date-options, .time-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .date-options p, .time-options p {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+  }
+  
+  .date-options p.selected, .time-options p.selected {
+    background-color: #2AA8FF;
+    color: white;
+  }
+  
+  .confirm-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .booking-confirmation {
+    text-align: center;
+  }
