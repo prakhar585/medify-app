@@ -2,9 +2,11 @@ import React from "react";
 import { useTheme } from "@mui/material/styles";
 import "./NavBar.css";
 import logo from "./../../images/Group 7.png";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -22,13 +24,13 @@ const Navbar = () => {
         <div className="logo-container">
           <img src={logo} alt="logo" />
         </div>
-        <div className="tab-container">
-            <div className="tab-item">Find doctors</div>
-            <div className="tab-item"> Hospitals</div>
-            <div className="tab-item"> medicine</div>
-            <div className="tab-item">Surgeries</div>
-            < div className="tab-item">software for provider</div>
-            <div className="tab-item">Facilities</div>
+        <div className="tab-container" >
+          <button className="tab-item">Find doctors</button>
+          <button className="tab-item" onClick={() => navigate("/search")}>Hospitals</button>
+          <button className="tab-item">medicine</button>
+          <button className="tab-item">Surgeries</button>
+          <button className="tab-item">software for provider</button>
+          <button className="tab-item">Facilities</button>
         </div>
         <button
           className="my-booking-button"
