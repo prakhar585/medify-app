@@ -39,7 +39,7 @@ const Dropdown = () => {
   useEffect(() => {
 
     const getCity = async () => {
-      console.log('city is being populated');
+      
       try {
         const response = await axios.get(
           `https://meddata-backend.onrender.com/cities/${state}`
@@ -64,12 +64,29 @@ const Dropdown = () => {
     setCity(""); // Reset city when state changes
   };
 
+
+  const getHospitals =async ()=>{
+
+    try {
+      const response = await axios.get(
+        `https://meddata-backend.onrender.com/data?state=${state}&city=${city}`
+      );
+      console.log(`hospital data fetched `,response.data)
+      
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+
+
   const handleCityChange = (event) => {
     setCity(event.target.value);
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    getHospitals();
     navigate({
       pathname:'/search',
       search:`?state=${state}&city=${city}`,
@@ -85,6 +102,7 @@ const Dropdown = () => {
               className="select"
               onChange={e=>handleStateChange(e)}
             >
+              <option value="" disabled selected>State</option>
               {stateList.map((option) => (
                 <option key={option.value} value={option.label}>
                   {option.label}
@@ -97,7 +115,9 @@ const Dropdown = () => {
             <select
               className="select"
               onChange={e=>handleCityChange(e)}
-            >{cityList.map((option) => (
+            >
+              <option value="" disabled selected>city</option>
+            {cityList.map((option) => (
               <option key={option.value} value={option.label}>
                 {option.label}
               </option>
