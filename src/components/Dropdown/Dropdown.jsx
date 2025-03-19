@@ -35,33 +35,40 @@ const Dropdown = () => {
     getState();
   }, []);
 
-  // Fetch cities based on selected state
   useEffect(() => {
+    if (!state) {
+        setCityList([]); // Clear cities when no state is selected
+        return;
+    }
 
-    const getCity = async () => {
-      
-      try {
-        const response = await axios.get(
-          `https://meddata-backend.onrender.com/cities/${state}`
-        );
-        const formattedData = response.data.map((city) => ({
-          value: city,
-          label: city,
-        }));
-        setCityList(formattedData);
-      } catch (error) {
-        console.error(error);
-      }
+    const fetchCities = async () => {
+        try {
+            const response = await axios.get(
+                `https://meddata-backend.onrender.com/cities/${state}`
+            );
+            const formattedData = response.data.map((city) => ({
+                value: city,
+                label: city,
+            }));
+            setCityList(formattedData);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
-    getCity();
-  }, [state]);
+    setTimeout(fetchCities, 100); // Small delay to allow state update
+
+}, [state]);
+
 
   const handleStateChange = (event) => {
-    console.log('state is changed');
-    setState(event.target.value);
+    const selectedState = event.target.value;
+    setState(selectedState);
     console.log(`stats is ${state}`);
     setCity(""); // Reset city when state changes
+    setCity([]);
+
+
   };
 
 
@@ -79,6 +86,12 @@ const Dropdown = () => {
 
   }
 
+  useEffect(() => {
+    if (state && city) {
+        getHospitals();
+    }
+}, [state, city]);
+
 
   const handleCityChange = (event) => {
     setCity(event.target.value);
@@ -86,6 +99,7 @@ const Dropdown = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if (!state || !city) return; // Prevent API call with empty values
     getHospitals();
     navigate({
       pathname:'/search',
