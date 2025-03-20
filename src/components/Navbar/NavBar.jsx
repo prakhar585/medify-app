@@ -38,6 +38,7 @@ const Navbar = () => {
             backgroundColor: theme.palette.primary.main,
             color: "white",
           }}
+          onClick={()=>navigate('/my-bookings')}
         >
           My Bookings
         </button>

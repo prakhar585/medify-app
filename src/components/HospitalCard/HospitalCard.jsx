@@ -58,7 +58,7 @@
 // export default HospitalCard;
 import React from "react";
 import { useState } from "react";
-import hospitalImage from "./../../images/NicePng_doctor-png_336282 1.png";
+import hospitalImage from "./../../images/hospital.png";
 import "./HospitalCard.css";
 import { useTheme } from "@mui/material/styles";
 import SlotBooking from "../SlotBooking/SlotBooking";
@@ -66,7 +66,8 @@ import SlotBooking from "../SlotBooking/SlotBooking";
 const HospitalCard = ({ hospital }) => {
   const [isVisible, setIsVisible] = useState(false);
   const theme = useTheme();
-
+  
+  console.log(hospital);
   const handleClick = () => {
     setIsVisible(!isVisible);
   };
