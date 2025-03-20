@@ -7,9 +7,8 @@ import axios from "axios";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import HospitalCard from "../components/HospitalCard/HospitalCard";
-import HospitalAd from './../images/hospitalAd.png'
-import './Search.css';
-
+import HospitalAd from "./../images/hospitalAd.png";
+import "./Search.css";
 
 const Search = () => {
   const [hospitalList, setHospitalList] = useState([]);
@@ -41,20 +40,41 @@ const Search = () => {
     <div>
       <NavBar />
       <Dropdown />
-      <Box sx={{textAlign:'left'}}>
-        <h1>{hospitalList.length} medical centers available in {city}</h1>
-      </Box>
+
       <Box
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center",
-          marginTop: "50px",
-         }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingBottom:'10px',
+          marginBottom:'50px',
+        }}
       >
-        <Grid sx={{  }} container spacing={2}>
-          <Grid sx={{ overflow:'hidden' }} size={{ xs: 12, md: 9 }}>
-          {hospitalList.map((hospital)=>(<HospitalCard hospital={hospital}/>))}
+        <Grid container spacing={2} sx={{padding:'20px'}}>
+          <Grid sx={{ overflow: "hidden" }} size={{ sm: 12, md: 9 }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "flex-end",
+               
+              }}
+            >
+              <h1 className="heading">
+                {hospitalList.length} medical centers available in{' '}
+                {city.toLowerCase()}
+              </h1>
+            </Box>
+            {hospitalList.map((hospital) => (
+              <HospitalCard hospital={hospital} />
+            ))}
           </Grid>
-          <Grid className="ad-grid" size={{ xs: 12, md: 3 }}>
-            <img  className="hospitalAd" src={HospitalAd} alt="hospital advertisment"/>
+          <Grid className="ad-grid" size={{ sm: 12, md: 3 }}>
+            <img
+              className="hospitalAd"
+              src={HospitalAd}
+              alt="hospital advertisment"
+            />
           </Grid>
         </Grid>
       </Box>
