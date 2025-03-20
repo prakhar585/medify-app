@@ -82,7 +82,7 @@ const HospitalCard = ({ hospital }) => {
           />
         </div>
         <div className="hospital-info">
-          <h3>{hospital['Hospital Name']}</h3>
+          <h3 className="hospital-name">{hospital['Hospital Name']}</h3>
           <h5>
             {hospital.City}, {hospital.State || hospital['Country Name']}
           </h5>
