@@ -41,6 +41,9 @@ const Search = () => {
     <div>
       <NavBar />
       <Dropdown />
+      <Box sx={{textAlign:'left'}}>
+        <h1>{hospitalList.length} medical centers available in {city}</h1>
+      </Box>
       <Box
         sx={{ display: "flex", alignItems: "center", justifyContent: "center",
           marginTop: "50px",
