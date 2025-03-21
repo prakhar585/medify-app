@@ -12,6 +12,7 @@ import "./Search.css";
 
 const Search = () => {
   const [hospitalList, setHospitalList] = useState([]);
+  const [displayHeading, setDisplayHeading] = useState(false);
   const [searchParams] = useSearchParams();
 
   // Retrieve values from URL query parameters
@@ -20,7 +21,7 @@ const Search = () => {
 
   console.log("City:", city);
   console.log("State:", state);
-
+  const displayCityName = city ? city.toLowerCase() : "Unknown"
   useEffect(() => {
     const getHospitals = async () => {
       try {
@@ -32,11 +33,12 @@ const Search = () => {
         console.error(error);
       }
     };
-
+    setDisplayHeading(true);
     getHospitals();
   }, [state, city]);
 
   return (
+    
     <div>
       <NavBar />
       <Dropdown />
@@ -60,13 +62,13 @@ const Search = () => {
                
               }}
             >
-              <h1 className="heading">
+              {city ? (<h1 className="heading">
                 {hospitalList.length} medical centers available in{' '}
-                {city.toLowerCase()}
-              </h1>
+                {displayCityName}
+              </h1>):<h2>Search for your nearby hospitals.</h2>}
             </Box>
             {hospitalList.map((hospital) => (
-              <HospitalCard hospital={hospital} />
+              <HospitalCard hospital={hospital} bookingPage={false} />
             ))}
           </Grid>
           <Grid className="ad-grid" size={{ sm: 12, md: 3 }}>

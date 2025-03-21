@@ -40,14 +40,22 @@ const SlotSelector = ({ hospital }) => {
       'State': hospital.State,
       'Hospital Type': hospital['Hospital Type'],
       'Hospital overall rating':hospital['Hospital overall rating'],
-      'time': slots,
+      'time': selectedSlot,
       'date': tabDates[selectedTab]
     };
 
-    localStorage.setItem('bookings',JSON.stringify(bookingObj));
+  
+    // Get existing bookings from localStorage or initialize as an empty array
+    const existingBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+    // Add the new booking
+    existingBookings.push(bookingObj);
+
+    // Save updated array back to localStorage
+    localStorage.setItem('bookings', JSON.stringify(existingBookings));
+};
 
 
-  }
 
   const renderTabPanel = (index) => {
     if (selectedTab !== index) return null;
