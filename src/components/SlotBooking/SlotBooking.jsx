@@ -7,15 +7,17 @@ const SlotSelector = ({ hospital }) => {
   const [selectedSlot, setSelectedSlot] = useState(null);
 
   // Utility to calculate date offset and format it
-  const getFormattedDate = (offsetDays) => {
-    const date = new Date();
-    date.setDate(date.getDate() + offsetDays);
-    return date.toLocaleDateString();
-  };
+const getFormattedDate = (offsetDays) => {
+  const date = new Date();
+  date.setDate(date.getDate() + offsetDays);
+  // If offset is 0, show "Today" instead of the actual date string.
+  return offsetDays === 0 ? "Today" : date.toLocaleDateString();
+};
 
-  // Define offsets for 6, 7, and 8 days after today
-  const dateOffsets = [6, 7, 8];
-  const tabDates = dateOffsets.map((offset) => getFormattedDate(offset));
+// Use offsets 0, 1, and 2 so that the first tab is for Today
+const dateOffsets = [0, 1, 2];
+const tabDates = dateOffsets.map((offset) => getFormattedDate(offset));
+
 
   const slots = {
     morning: ["09:00 AM", "10:00 AM", "11:00 AM"],
@@ -35,7 +37,7 @@ const SlotSelector = ({ hospital }) => {
     console.log('handleBooking was clicked')
     
     const bookingObj = {
-      'Name': hospital['Hospital Name'],
+      'Hospital Name': hospital['Hospital Name'],
       'City': hospital.City,
       'State': hospital.State,
       'Hospital Type': hospital['Hospital Type'],
